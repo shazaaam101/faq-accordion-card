@@ -1,0 +1,199 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+  --primary-fw: 700;
+  --secondary-fw: 400;
+  --primary-fs: 12px;
+  --primary-text-very-dark-blue: hsl(238, 29%, 16%);
+  --primary-text-soft-red: hsl(14, 88%, 65%);
+  --primary-bg-gradient-violet :hsl(273, 75%, 66%);
+  --primary-bg-gradient-blue :hsl(240, 73%, 65%);
+  --neutral-text-very-dark-grayish-blue: hsl(237, 12%, 33%);
+  --neutral-text-dark-grayish-blue:hsl(240, 6%, 50%);
+  --neutral-dividers-light-grayish-blue: hsl(240, 5%, 91%);
+}
+
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 10px;
+  height: 7px;
+  background-image: url("./images/icon-arrow-down.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: all 0.3s ease-in-out;
+}
+
+input[type="checkbox"]:checked {
+  transform: rotate(180deg);
+}
+/*Mobile style*/
+.App {
+  font-family: 'Kumbh Sans', sans-serif;
+  font-size: var(--primary-fs);
+  font-weight: var(--secondary-fw);
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  background-image: linear-gradient(to bottom, var(--primary-bg-gradient-violet), var(--primary-bg-gradient-blue));
+}
+
+.App .container {
+  position: relative;
+  width: min(90%, 60rem);
+  margin-inline: auto;
+  
+  background-color: var(--neutral-dividers-light-grayish-blue);
+  padding: 1rem;
+  border-radius: 1rem;
+  margin-top: 100px;
+  --_image-size: 200px;
+}
+
+.App .image {
+  width: var(--_image-size);
+  aspect-ratio: 1;
+  background-image: url("./images/illustration-woman-online-mobile.svg");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.App .image::after {
+  content: "";
+  position: absolute;
+  width: 200px;
+  height: 104px;
+  background-image: url("./images/bg-pattern-mobile.svg");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  z-index: -1;
+}
+
+
+
+.App .image.overlap {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%,-65%);
+  
+}
+
+.App .questions {
+  margin-top: calc(var(--_image-size) / 2)
+}
+
+.App .title {
+  text-align: center;
+}
+
+.Question > * {
+  margin-top: 1em;
+}
+
+.Question .field {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Question .question {
+  flex: 1;
+  cursor: pointer;
+}
+
+.Question .answer {
+  display: none;
+}
+
+.Question:has( .checkbox:checked) .answer {
+  display: block;
+}
+
+.Question:has( .checkbox:checked) .question {
+  font-weight: var(--primary-fw);
+}
+
+.Question .question:is(:hover, :focus) {
+  color: var(--primary-text-soft-red);
+}
+
+@media screen and (min-width: 800px){
+  .App .container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    --_image-size: 500px;
+    padding-inline: 0 5rem;
+    margin: 0;
+  }
+
+  .App .overflow {
+    overflow: hidden;
+  }
+
+  .App .image {
+    position: relative;
+    flex: 1;
+    background-image: url("./images/illustration-woman-online-desktop.svg");  
+  }
+
+  .App .image::after {
+    content: "";
+    position: absolute;
+    width: 966px;
+    height: 945px;
+    background-image: url("./images/bg-pattern-desktop.svg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    top: 40%;
+    left: 10%;
+    transform: translate(-50%,-50%);
+    z-index: -1;
+  }
+
+  .App .box {
+    position: absolute;
+    width: 191px;
+    height: 184px;
+    background-image: url("./images/illustration-box-desktop.svg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    top: 60%;
+    left: -20%;
+    transform: translate(50%,-50%);
+    z-index: 99;
+  }
+
+  .App .image.overlap {
+    position: relative;
+    transform: translate(0,0);
+    left: -20%;
+  }
+
+  .App .questions {
+    margin-top: 0;
+    flex: 1;
+  }
+
+  .App .questions > * {
+    margin-top: 2em;
+  }
+
+  .App .questions .title {
+    text-align: left;
+  }
+}
+
+
